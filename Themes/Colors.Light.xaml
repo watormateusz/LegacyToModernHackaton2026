@@ -1,0 +1,41 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <!-- Primary / OnPrimary -->
+  <Color x:Key="PrimaryColor">#1E40F4</Color>
+  <Color x:Key="PrimaryContainerColor">#E5ECFF</Color>
+  <Color x:Key="OnPrimaryColor">#FFFFFFFF</Color>
+  <Color x:Key="OnPrimaryContainerColor">#0B1A80</Color>
+
+  <!-- Surface / OnSurface -->
+  <Color x:Key="SurfaceColor">#FFF7F8FA</Color>
+  <Color x:Key="SurfaceVariantColor">#FFE6E6E6</Color>
+  <Color x:Key="OutlineColor">#FFB9B9B9</Color>
+  <Color x:Key="OnSurfaceColor">#FF222222</Color>
+  <Color x:Key="OnSurfaceVariantColor">#FF555555</Color>
+
+  <!-- Brushes -->
+  <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}"/>
+  <SolidColorBrush x:Key="PrimaryContainerBrush" Color="{StaticResource PrimaryContainerColor}"/>
+  <SolidColorBrush x:Key="OnPrimaryBrush" Color="{StaticResource OnPrimaryColor}"/>
+  <SolidColorBrush x:Key="OnPrimaryContainerBrush" Color="{StaticResource OnPrimaryContainerColor}"/>
+
+  <SolidColorBrush x:Key="SurfaceBrush" Color="{StaticResource SurfaceColor}"/>
+  <SolidColorBrush x:Key="SurfaceVariantBrush" Color="{StaticResource SurfaceVariantColor}"/>
+  <SolidColorBrush x:Key="OutlineBrush" Color="{StaticResource OutlineColor}"/>
+  <SolidColorBrush x:Key="OnSurfaceBrush" Color="{StaticResource OnSurfaceColor}"/>
+  <SolidColorBrush x:Key="OnSurfaceVariantBrush" Color="{StaticResource OnSurfaceVariantColor}"/>
+
+  <!-- Elevation (cienie) -->
+  <DropShadowEffect x:Key="Elevation1" BlurRadius="12" ShadowDepth="2" Opacity="0.18" Direction="270"/>
+  <DropShadowEffect x:Key="Elevation2" BlurRadius="18" ShadowDepth="4" Opacity="0.22" Direction="270"/>
+
+  <!-- Metryki -->
+  <CornerRadius x:Key="CornerS">6</CornerRadius>
+  <CornerRadius x:Key="CornerM">10</CornerRadius>
+  <CornerRadius x:Key="CornerL">14</CornerRadius>
+
+  <Thickness x:Key="PadS">6</Thickness>
+  <Thickness x:Key="PadM">10</Thickness>
+  <Thickness x:Key="PadL">16</Thickness>
+</ResourceDictionary>

@@ -1,0 +1,57 @@
+{
+	"Service":"Excel",
+	"Methods":[
+		{
+			"Pascal":["TExcel.ConnectToActive"],
+			"CSharp":"ex = new Excel(false)",
+			"Examples": [
+				{
+					"PascalCode": "e := TExcel.ConnectToActive();",
+					"CSharpCode": "ex = new Excel(false);"
+				}
+			]
+		},
+		{
+			"Pascal":["ActiveRow"],
+			"CSharp":"GetActiveRow()",
+			"Examples": [
+				{
+					"PascalCode": "TExcel.ConnectToActive()",
+					"CSharpCode": "e.ActiveRow"
+				}
+			]
+		},
+		{
+			"Pascal":["ActiveCol"],
+			"CSharp":"GetActiveColumn()",
+			"Examples": [
+				{
+					"PascalCode": "e.ActiveCol",
+					"CSharpCode": "ex.GetActiveColumn()"
+				}
+			]
+		},
+		{
+			"Pascal":["SetValue"],
+			"CSharp":"SetValue()",
+			"Examples": [
+				{
+					"PascalCode": "e.SetValue(wiersz,kol + 21,Trim(GetTextRect(18,08,18,47)))",
+					"CSharpCode": "ex.SetValue(wiersz,kol + 21,icbs.GetTextRect(18,08,18,47).Trim())"
+				},
+				{
+					"PascalCode": "e.SetValue(row,col,'value')",
+					"CSharpCode": "ex.SetValue(row,col,\"value\")"
+				},
+				{
+					"PascalCode": "e.SetValue(3,12,'value')",
+					"CSharpCode": "ex.SetValue(3,12,\"value\")"
+				},
+				{
+					"PascalCode": "e.SetValue(wiersz,kol + 21,Trim(GetTextRect(x1,y1,x2,y2)))",
+					"CSharpCode": "ex.SetValue(wiersz,kol + 21,icbs.GetTextRect((x1,y1,x2,y2).Trim())"
+				}
+			]
+		}		
+	]
+}

@@ -1,0 +1,41 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <!-- Primary / OnPrimary -->
+  <Color x:Key="PrimaryColor">#90A4FF</Color> <!-- jaśniejszy akcent na ciemnym -->
+  <Color x:Key="PrimaryContainerColor">#22306E</Color>
+  <Color x:Key="OnPrimaryColor">#FF101218</Color>
+  <Color x:Key="OnPrimaryContainerColor">#FFDEE5FF</Color>
+
+  <!-- Surface / OnSurface -->
+  <Color x:Key="SurfaceColor">#FF101318</Color>
+  <Color x:Key="SurfaceVariantColor">#FF1B2230</Color>
+  <Color x:Key="OutlineColor">#FF3E4654</Color>
+  <Color x:Key="OnSurfaceColor">#FFEAEDF3</Color>
+  <Color x:Key="OnSurfaceVariantColor">#FFB7C0CF</Color>
+
+  <!-- Brushes -->
+  <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}"/>
+  <SolidColorBrush x:Key="PrimaryContainerBrush" Color="{StaticResource PrimaryContainerColor}"/>
+  <SolidColorBrush x:Key="OnPrimaryBrush" Color="{StaticResource OnPrimaryColor}"/>
+  <SolidColorBrush x:Key="OnPrimaryContainerBrush" Color="{StaticResource OnPrimaryContainerColor}"/>
+
+  <SolidColorBrush x:Key="SurfaceBrush" Color="{StaticResource SurfaceColor}"/>
+  <SolidColorBrush x:Key="SurfaceVariantBrush" Color="{StaticResource SurfaceVariantColor}"/>
+  <SolidColorBrush x:Key="OutlineBrush" Color="{StaticResource OutlineColor}"/>
+  <SolidColorBrush x:Key="OnSurfaceBrush" Color="{StaticResource OnSurfaceColor}"/>
+  <SolidColorBrush x:Key="OnSurfaceVariantBrush" Color="{StaticResource OnSurfaceVariantColor}"/>
+
+  <!-- Elevation (delikatnie słabsze) -->
+  <DropShadowEffect x:Key="Elevation1" BlurRadius="14" ShadowDepth="2" Opacity="0.22" Direction="270"/>
+  <DropShadowEffect x:Key="Elevation2" BlurRadius="20" ShadowDepth="4" Opacity="0.26" Direction="270"/>
+
+  <!-- Metryki (te same) -->
+  <CornerRadius x:Key="CornerS">6</CornerRadius>
+  <CornerRadius x:Key="CornerM">10</CornerRadius>
+  <CornerRadius x:Key="CornerL">14</CornerRadius>
+
+  <Thickness x:Key="PadS">6</Thickness>
+  <Thickness x:Key="PadM">10</Thickness>
+  <Thickness x:Key="PadL">16</Thickness>
+</ResourceDictionary>

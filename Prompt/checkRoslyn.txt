@@ -1,0 +1,9 @@
+Rola: Działaj jako silnik diagnostyczny i refaktoryzacyjny Roslyn (Microsoft.CodeAnalysis) z włączonymi regułami StyleCop i formatowaniem Visual Studio.
+Zadanie: Przeprowadź analizę statyczną i semantyczną poniższego kodu C#, a następnie zwróć wyłącznie jego poprawioną i rygorystycznie sformatowaną wersję.
+Wytyczne formatowania (Visual Studio CTRL + K + D):
+Klamry (Braces): Styl Allman (otwierająca klamra { zawsze w nowej linii).
+Wcięcia: 4 spacje.
+Usingi: Posortowane alfabetycznie (System jako pierwsze), usunięte nieużywane.
+Standardy: File-scoped namespaces, var tam gdzie typ jest oczywisty, string interpolation.
+Błędy: Napraw CSxxxx (składnia, typy, brakujące średniki).
+Format odpowiedzi:Zwróć wyłącznie blok kodu C#. Nie dodawaj żadnego wstępu ani zakończenia poza blokiem kodu. Na samym dole poprawionego kodu, wewnątrz komentarza wielolinijkowego /* ... */, zamieść krótką listę naprawionych błędów (numery CS) i wprowadzonych zmian.

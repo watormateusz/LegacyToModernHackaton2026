@@ -1,0 +1,169 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit">
+
+  <!-- ===== Typografia domyślna ===== -->
+  <Style TargetType="TextBlock">
+    <Setter Property="Foreground" Value="{DynamicResource OnSurfaceBrush}"/>
+    <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+  </Style>
+
+  <!-- ===== Karta (Border) ===== -->
+  <Style x:Key="CardStyle" TargetType="Border">
+    <Setter Property="Background" Value="{DynamicResource SurfaceBrush}"/>
+    <Setter Property="CornerRadius" Value="{DynamicResource CornerL}"/>
+    <Setter Property="Padding" Value="{DynamicResource PadL}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource SurfaceVariantBrush}"/>
+    <Setter Property="BorderThickness" Value="1"/>
+    <Setter Property="Effect" Value="{DynamicResource Elevation1}"/>
+  </Style>
+
+  <!-- ===== Outlined Button ===== -->
+  <Style x:Key="OutlinedButtonStyle" TargetType="Button">
+    <Setter Property="Foreground" Value="{DynamicResource OnSurfaceBrush}"/>
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource OutlineBrush}"/>
+    <Setter Property="BorderThickness" Value="1"/>
+    <Setter Property="Padding" Value="14,8"/>
+    <Setter Property="FontSize" Value="14"/>
+    <Setter Property="Cursor" Value="Hand"/>
+    <Setter Property="SnapsToDevicePixels" Value="True"/>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Button">
+          <Border x:Name="Root"
+                  Background="{TemplateBinding Background}"
+                  BorderBrush="{TemplateBinding BorderBrush}"
+                  BorderThickness="{TemplateBinding BorderThickness}"
+                  CornerRadius="{DynamicResource CornerM}">
+            <Grid ClipToBounds="True">
+              <ContentPresenter HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+              <!-- ripple -->
+              <Ellipse x:Name="Ripple"
+                       Width="14" Height="14"
+                       Fill="{DynamicResource OnSurfaceVariantBrush}"
+                       Opacity="0"
+                       RenderTransformOrigin="0.5,0.5">
+                <Ellipse.RenderTransform>
+                  <ScaleTransform x:Name="RippleScale" ScaleX="0.1" ScaleY="0.1"/>
+                </Ellipse.RenderTransform>
+              </Ellipse>
+            </Grid>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter TargetName="Root" Property="Opacity" Value="0.45"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter TargetName="Root" Property="BorderBrush" Value="{DynamicResource OnSurfaceVariantBrush}"/>
+              <Setter TargetName="Root" Property="Background" Value="{DynamicResource PrimaryContainerBrush}"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+              <Trigger.EnterActions>
+                <BeginStoryboard>
+                  <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="RippleScale"
+                                     Storyboard.TargetProperty="ScaleX"
+                                     From="0.1" To="8" Duration="0:0:0.35"/>
+                    <DoubleAnimation Storyboard.TargetName="RippleScale"
+                                     Storyboard.TargetProperty="ScaleY"
+                                     From="0.1" To="8" Duration="0:0:0.35"/>
+                    <DoubleAnimation Storyboard.TargetName="Ripple"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0.15" To="0" Duration="0:0:0.35"/>
+                  </Storyboard>
+                </BeginStoryboard>
+              </Trigger.EnterActions>
+            </Trigger>
+            <Trigger Property="IsKeyboardFocused" Value="True">
+              <Setter TargetName="Root" Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <!-- ===== Filled (Primary) Button ===== -->
+  <Style x:Key="FilledButtonStyle" TargetType="Button" BasedOn="{StaticResource OutlinedButtonStyle}">
+    <Setter Property="Foreground" Value="{DynamicResource OnPrimaryBrush}"/>
+    <Setter Property="Background" Value="{DynamicResource PrimaryBrush}"/>
+    <Setter Property="BorderBrush" Value="{x:Null}"/>
+    <Setter Property="Effect" Value="{DynamicResource Elevation2}"/>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Button">
+          <Border x:Name="Root"
+                  Background="{TemplateBinding Background}"
+                  CornerRadius="{DynamicResource CornerM}">
+            <Grid ClipToBounds="True">
+              <ContentPresenter HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Margin="6,2"/>
+              <Ellipse x:Name="Ripple"
+                       Width="14" Height="14"
+                       Fill="#40FFFFFF"
+                       Opacity="0"
+                       RenderTransformOrigin="0.5,0.5">
+                <Ellipse.RenderTransform>
+                  <ScaleTransform x:Name="RippleScale" ScaleX="0.1" ScaleY="0.1"/>
+                </Ellipse.RenderTransform>
+              </Ellipse>
+            </Grid>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter TargetName="Root" Property="Opacity" Value="0.45"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter TargetName="Root" Property="Background">
+                <Setter.Value>
+                  <SolidColorBrush Color="#244AF6"/>
+                </Setter.Value>
+              </Setter>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+              <Trigger.EnterActions>
+                <BeginStoryboard>
+                  <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="RippleScale"
+                                     Storyboard.TargetProperty="ScaleX"
+                                     From="0.1" To="8" Duration="0:0:0.35"/>
+                    <DoubleAnimation Storyboard.TargetName="RippleScale"
+                                     Storyboard.TargetProperty="ScaleY"
+                                     From="0.1" To="8" Duration="0:0:0.35"/>
+                    <DoubleAnimation Storyboard.TargetName="Ripple"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0.18" To="0" Duration="0:0:0.35"/>
+                  </Storyboard>
+                </BeginStoryboard>
+              </Trigger.EnterActions>
+            </Trigger>
+            <Trigger Property="IsKeyboardFocused" Value="True">
+              <Setter TargetName="Root" Property="Background" Value="#2344E9"/>
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <!-- ===== AvalonEdit (light/dark via DynamicResource) ===== -->
+  <Style TargetType="avalonEdit:TextEditor">
+    <Setter Property="FontFamily" Value="Cascadia Code, Consolas, monospace"/>
+    <Setter Property="FontSize" Value="13"/>
+    <Setter Property="Foreground" Value="{DynamicResource OnSurfaceBrush}"/>
+    <!-- Tło edytora kontrastowe: w jasnym lekko jaśniejsze, w ciemnym lekko ciemniejsze -->
+    <Setter Property="Background">
+      <Setter.Value>
+        <SolidColorBrush Color="{Binding Source={x:Static SystemParameters.WindowGlassColor}}"/>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Background" Value="{DynamicResource SurfaceBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource SurfaceVariantBrush}"/>
+    <Setter Property="BorderThickness" Value="1"/>
+    <Setter Property="Padding" Value="10"/>
+    <Setter Property="ShowLineNumbers" Value="True"/>
+  </Style>
+</ResourceDictionary>

@@ -1,0 +1,66 @@
+﻿## File containig secrets
+apikey.txt
+
+
+## Below standard ignored files for .net
+
+## .NET / C#
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Tt]est[Rr]esults/
+*.user
+*.userosscache
+*.sln.docstates
+
+## JetBrains Rider (Twoje środowisko)
+.idea/
+*.sln.iml
+*.{arch,sln}.iml
+
+## VS Code (Środowisko kolegów)
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+## Visual Studio (Na wypadek użycia w przyszłości)
+.vs/
+[Vv]IP/
+Debug/
+Release/
+x64/
+x86/
+
+## Systemy Operacyjne
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+## Narzędzia i Pakiety
+.nuget/
+*.nupkg
+packages/
+node_modules/
+
+## Pliki środowiskowe (Pamiętaj, by nie commitować haseł!)
+.env
+.env.local
+.env.*.local
+appsettings.Development.json

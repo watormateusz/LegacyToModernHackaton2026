@@ -1,0 +1,204 @@
+﻿<Window x:Class="WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
+        Title="Pascal → C#"
+        WindowState="Maximized"
+        Background="{DynamicResource SurfaceBrush}"
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True"
+        TextOptions.TextFormattingMode="Ideal"
+        >
+    <Window.Resources>
+
+        <Storyboard x:Key="JumpingDotsAnimation" RepeatBehavior="Forever">
+            <DoubleAnimation Storyboard.TargetName="Dot1"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                             From="0" To="-8" Duration="0:0:0.28" AutoReverse="True"/>
+            <DoubleAnimation Storyboard.TargetName="Dot2"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                             From="0" To="-8" Duration="0:0:0.28" AutoReverse="True" BeginTime="0:0:0.14"/>
+            <DoubleAnimation Storyboard.TargetName="Dot3"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                             From="0" To="-8" Duration="0:0:0.28" AutoReverse="True" BeginTime="0:0:0.28"/>
+        </Storyboard>
+    </Window.Resources>
+
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" Grid.ColumnSpan="2"
+                Background="{DynamicResource PrimaryContainerBrush}"
+                CornerRadius="{DynamicResource CornerM}"
+                Padding="{DynamicResource PadM}"
+                Margin="0,0,0,12"
+                BorderBrush="{DynamicResource SurfaceVariantBrush}"
+                BorderThickness="1"
+                Effect="{DynamicResource Elevation1}">
+            <DockPanel LastChildFill="True">
+                <TextBlock Text="Pascal → C# (konwerter)"
+                           FontSize="18" FontWeight="SemiBold"
+                           Foreground="{DynamicResource OnPrimaryContainerBrush}"
+                           VerticalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <TextBlock Text="Motyw" Foreground="{DynamicResource OnPrimaryContainerBrush}" VerticalAlignment="Center"/>
+                    <ToggleButton x:Name="ThemeToggle"
+                                  Width="52" Height="28"
+                                  Margin="0,0,0,0"
+                                  VerticalAlignment="Center"
+                                  ToolTip="Przełącz motyw"
+                                  IsChecked="False"
+                                  Checked="ThemeToggle_Checked"
+                                  Unchecked="ThemeToggle_Unchecked">
+                        <ToggleButton.Template>
+                            <ControlTemplate TargetType="ToggleButton">
+                                <Grid>
+                                    <Border x:Name="Track" CornerRadius="14"
+                                            Background="{DynamicResource SurfaceVariantBrush}"
+                                            BorderBrush="{DynamicResource OutlineBrush}" BorderThickness="1"/>
+                                    <Border x:Name="Thumb" Width="24" Height="24" CornerRadius="12"
+                                            Background="{DynamicResource SurfaceBrush}"
+                                            Effect="{DynamicResource Elevation1}"
+                                            Margin="2"/>
+                                    <Grid>
+                                        <TextBlock x:Name="Sun" Text="🌞" FontSize="14" HorizontalAlignment="Left" Margin="6,0,0,0" VerticalAlignment="Center" Opacity="1"/>
+                                        <TextBlock x:Name="Moon" Text="🌙" FontSize="14" HorizontalAlignment="Right" Margin="0,0,6,0" VerticalAlignment="Center" Opacity="0.5"/>
+                                    </Grid>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsChecked" Value="True">
+                                        <Setter TargetName="Track" Property="Background" Value="{DynamicResource PrimaryBrush}"/>
+                                        <Setter TargetName="Thumb" Property="Background" Value="{DynamicResource OnPrimaryBrush}"/>
+                                        <Setter TargetName="Sun" Property="Opacity" Value="0.5"/>
+                                        <Setter TargetName="Moon" Property="Opacity" Value="1"/>
+                                        <Setter TargetName="Thumb" Property="Margin" Value="26,2,2,2"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </ToggleButton.Template>
+                    </ToggleButton>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <Border Grid.Row="1" Grid.Column="0" Style="{DynamicResource CardStyle}" Margin="0,0,8,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <DockPanel Grid.Row="0" Margin="0,0,0,8">
+                    <Image Source="/Images/pascal.png"
+                           Height="40" Stretch="Uniform"
+                           Margin="0,0,8,0" />
+                    <TextBlock Text="Pascal" FontSize="16" FontWeight="SemiBold"
+                               VerticalAlignment="Center"/>
+                </DockPanel>
+
+                <ScrollViewer Grid.Row="1"
+                              HorizontalScrollBarVisibility="Auto"
+                              VerticalScrollBarVisibility="Auto">
+                    <avalonEdit:TextEditor x:Name="PascalCodeTextBox"
+                                           Visibility="Collapsed"
+                                           TextChanged="PascalCodeTextBox_TextChanged"/>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="1" Grid.Column="1" Style="{DynamicResource CardStyle}" Margin="8,0,0,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <DockPanel Grid.Row="0" Margin="0,0,0,8">
+                    <Image Source="/Images/csharp.png"
+                           Height="40" Stretch="Uniform"
+                           Margin="0,0,8,0"/>
+                    <TextBlock Text="C#" FontSize="16" FontWeight="SemiBold"
+                               VerticalAlignment="Center"/>
+                </DockPanel>
+
+                <ScrollViewer Grid.Row="1"
+                              HorizontalScrollBarVisibility="Auto"
+                              VerticalScrollBarVisibility="Auto">
+                    <avalonEdit:TextEditor x:Name="CSharpCodeTextBox"
+                                           Visibility="Collapsed"
+                                           SyntaxHighlighting="C#"/>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="0,12,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0"
+                    Content="Wybierz plik"
+                    FontSize="15"
+                    Style="{DynamicResource OutlinedButtonStyle}"
+                    HorizontalAlignment="Center"
+                    Click="SelectFileButton_Click"/>
+
+            <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                <TextBlock x:Name="FileNameTextBlock"
+                           FontSize="15"
+                           Margin="0,0,0,8"
+                           TextAlignment="Center"
+                           Foreground="{DynamicResource OnSurfaceVariantBrush}"/>
+
+                <Grid HorizontalAlignment="Center">
+                    <Button x:Name="ConvertButton"
+                            Content="Konwertuj"
+                            FontSize="15"
+                            Style="{DynamicResource FilledButtonStyle}"
+                            IsEnabled="False"
+                            Click="ConvertButton_Click"/>
+
+                    <StackPanel x:Name="LoadingDotsPanel"
+                                Orientation="Horizontal"
+                                Visibility="Collapsed"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <Ellipse x:Name="Dot1" Width="8" Height="8" Fill="{DynamicResource PrimaryBrush}" Margin="3">
+                            <Ellipse.RenderTransform>
+                                <TranslateTransform Y="0"/>
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
+                        <Ellipse x:Name="Dot2" Width="8" Height="8" Fill="{DynamicResource PrimaryBrush}" Margin="3">
+                            <Ellipse.RenderTransform>
+                                <TranslateTransform Y="0"/>
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
+                        <Ellipse x:Name="Dot3" Width="8" Height="8" Fill="{DynamicResource PrimaryBrush}" Margin="3">
+                            <Ellipse.RenderTransform>
+                                <TranslateTransform Y="0"/>
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+
+            <Button Grid.Column="2" x:Name="SaveButton"
+                    Content="Zapisz jako .cs"
+                    FontSize="15"
+                    Style="{DynamicResource OutlinedButtonStyle}"
+                    HorizontalAlignment="Center"
+                    Click="SaveButton_Click"
+                    IsEnabled="False"/>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,174 @@
+{
+  "Service": "ICBS",
+  "Methods": [
+    {
+      "Pascal": ["Connect", "ICBSConnect"],
+      "CSharp": "Connect",
+      "Parameters": [],
+      "Return": "void",
+      "Examples": [
+        {
+          "PascalCode": "Connect;",
+          "CSharpCode": "icbs.Connect();"
+        }
+      ]
+    },
+    {
+      "Pascal": ["Disconnect", "ICBSDisconnect"],
+      "CSharp": "Disconnect",
+      "Parameters": [],
+      "Return": "void",
+      "Examples": [
+        {
+          "PascalCode": "Disconnect;",
+          "CSharpCode": "icbs.Disconnect();"
+        }
+      ]
+    },
+    {
+      "Pascal": ["SendKeys", "ICBSSendKeys"],
+      "CSharp": "SendKeys",
+      "Parameters": [
+        { "Name": "text", "Type": "string" }
+      ],
+      "Return": "void",
+      "Examples": [
+        {
+          "PascalCode": "SendKeys('@E');",
+          "CSharpCode": "icbs.SendKeys(\"@E\");"
+        }
+      ]
+    },
+    {
+      "Pascal": ["SendKeysAt", "SendKeysAT"],
+      "CSharp": "SendKeysAt",
+      "Parameters": [
+        { "Name": "row", "Type": "int" },
+        { "Name": "col", "Type": "int" },
+        { "Name": "text", "Type": "string" }
+      ],
+      "Return": "void",
+      "Examples": [
+        {
+          "PascalCode": "SendKeysAT('abc', 20, 10);",
+          "CSharpCode": "icbs.SendKeysAt(20, 10, \"abc\");"
+        }
+      ]
+    },
+    {
+      "Pascal": ["SetText"],
+      "CSharp": "SetText",
+      "Parameters": [
+        { "Name": "text", "Type": "string" }
+      ],
+      "Return": "void",
+      "Examples": [
+        {
+          "PascalCode": "SetText('ABC');",
+          "CSharpCode": "icbs.SetText(\"ABC\");"
+        }
+      ]
+    },
+    {
+      "Pascal": ["SetTextAt"],
+      "CSharp": "SetTextAt",
+      "Parameters": [
+        { "Name": "row", "Type": "int" },
+        { "Name": "col", "Type": "int" },
+        { "Name": "text", "Type": "string" }
+      ],
+      "Return": "void",
+      "Examples": [
+        {
+          "PascalCode": "SetTextAt(5, 10, 'ABC');",
+          "CSharpCode": "icbs.SetTextAt(5, 10, \"ABC\");"
+        }
+      ]
+    },
+    {
+      "Pascal": ["GetText"],
+      "CSharp": "GetText",
+      "Parameters": [
+        { "Name": "row", "Type": "int" },
+        { "Name": "col", "Type": "int" },
+        { "Name": "length", "Type": "int" }
+      ],
+      "Return": "string",
+      "Examples": [
+        {
+          "PascalCode": "value := GetText(5, 10, 20);",
+          "CSharpCode": "var value = icbs.GetText(5, 10, 20);"
+        }
+      ]
+    },
+    {
+      "Pascal": ["GetTextRect"],
+      "CSharp": "GetTextRect",
+      "Parameters": [
+        { "Name": "row1", "Type": "int" },
+        { "Name": "col1", "Type": "int" },
+        { "Name": "row2", "Type": "int" },
+        { "Name": "col2", "Type": "int" }
+      ],
+      "Return": "string",
+      "Examples": [
+        {
+          "PascalCode": "GetTextRect(9, 26, 9, 48);",
+          "CSharpCode": "icbs.GetTextRect(9, 26, 9, 48);"
+        }
+      ]
+    },
+    {
+      "Pascal": ["GetScreen"],
+      "CSharp": "GetScreen",
+      "Parameters": [],
+      "Return": "string",
+      "Examples": [
+        {
+          "PascalCode": "screen := GetScreen;",
+          "CSharpCode": "var screen = icbs.GetScreen();"
+        }
+      ]
+    },
+    {
+      "Pascal": ["GetFormatScreen"],
+      "CSharp": "GetFormatScreen",
+      "Parameters": [],
+      "Return": "string",
+      "Examples": [
+        {
+          "PascalCode": "screen := GetFormatScreen;",
+          "CSharpCode": "var screen = icbs.GetFormatScreen();"
+        }
+      ]
+    },
+    {
+      "Pascal": ["SearchText"],
+      "CSharp": "SearchText",
+      "Parameters": [
+        { "Name": "text", "Type": "string" }
+      ],
+      "Return": "bool",
+      "Examples": [
+        {
+          "PascalCode": "found := SearchText('ABC');",
+          "CSharpCode": "var found = icbs.SearchText(\"ABC\");"
+        }
+      ]
+    },
+    {
+      "Pascal": ["Trim"],
+      "CSharp": "Trim",
+      "Parameters": [
+        { "Name": "source", "Type": "string" }
+      ],
+      "Return": "string",
+      "Examples": [
+        {
+          "PascalCode": "Trim(GetTextRect(09,26,09,48))",
+          "CSharpCode": "icbs.GetTextRect(9,26,9,48).Trim()"
+        }
+      ]
+    }
+  ]
+}

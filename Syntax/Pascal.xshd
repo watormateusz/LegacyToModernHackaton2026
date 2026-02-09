@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SyntaxDefinition name="Pascal" extensions=".pas;.ps"
+                  xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+
+  <!-- Domyślne kolory (light) -->
+  <Color name="Default"   foreground="#FF000000" background="#FFFFFFFF" />
+  <Color name="Keyword"   foreground="#FF0000FF" fontWeight="bold" />
+  <Color name="String"    foreground="#FFA31515" />
+  <Color name="Comment"   foreground="#FF008000" />
+  <Color name="Number"    foreground="#FF098658" />
+  <Color name="Directive" foreground="#FF800080" />
+
+  <RuleSet ignoreCase="true">
+
+    <!-- Komentarze -->
+    <!-- { ... } -->
+    <Span color="Comment" begin="\{" end="\}" />
+    <!-- (* ... *) -->
+    <Span color="Comment" begin="\(\*" end="\*\)" />
+    <!-- // ... \n -->
+    <Span color="Comment" begin="\/\/" end="\n" />
+
+    <!-- Dyrektywy kompilatora {$IFDEF}, {$R}, itp. -->
+    <Span color="Directive" begin="\{\$" end="\}" />
+
+    <!-- Stringi ' ... ' (prosta wersja) -->
+    <Span color="String" begin="&apos;" end="&apos;" />
+
+    <!-- Liczby: dziesiętne, zmiennoprzecinkowe, heksadecymalne $... -->
+    <Rule color="Number">\b(\$[0-9A-Fa-f]+|\d+(\.\d+)?)\b</Rule>
+
+    <!-- Słowa kluczowe -->
+    <Keywords color="Keyword">
+      <Word>program</Word>
+      <Word>unit</Word>
+      <Word>interface</Word>
+      <Word>implementation</Word>
+      <Word>uses</Word>
+      <Word>type</Word>
+      <Word>var</Word>
+      <Word>const</Word>
+      <Word>resourcestring</Word>
+
+      <Word>begin</Word>
+      <Word>end</Word>
+      <Word>initialization</Word>
+      <Word>finalization</Word>
+
+      <Word>procedure</Word>
+      <Word>function</Word>
+      <Word>constructor</Word>
+      <Word>destructor</Word>
+      <Word>class</Word>
+      <Word>object</Word>
+      <Word>record</Word>
+      <Word>packed</Word>
+      <Word>property</Word>
+
+      <Word>private</Word>
+      <Word>protected</Word>
+      <Word>public</Word>
+      <Word>published</Word>
+
+      <Word>if</Word>
+      <Word>then</Word>
+      <Word>else</Word>
+      <Word>for</Word>
+      <Word>to</Word>
+      <Word>downto</Word>
+      <Word>do</Word>
+      <Word>while</Word>
+      <Word>repeat</Word>
+      <Word>until</Word>
+      <Word>with</Word>
+      <Word>case</Word>
+      <Word>of</Word>
+      <Word>try</Word>
+      <Word>except</Word>
+      <Word>finally</Word>
+      <Word>raise</Word>
+
+      <Word>and</Word>
+      <Word>or</Word>
+      <Word>not</Word>
+      <Word>xor</Word>
+      <Word>shl</Word>
+      <Word>shr</Word>
+      <Word>div</Word>
+      <Word>mod</Word>
+      <Word>in</Word>
+      <Word>out</Word>
+
+      <Word>nil</Word>
+      <Word>true</Word>
+      <Word>false</Word>
+    </Keywords>
+  </RuleSet>
+</SyntaxDefinition>

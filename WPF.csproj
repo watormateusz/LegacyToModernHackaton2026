@@ -1,0 +1,78 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Opcjonalne, ale przydatne gdy używasz Windows-owych API -->
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+  </PropertyGroup>
+
+  <!-- ========================= -->
+  <!--      ZASOBY / KOPIOWANIE  -->
+  <!-- ========================= -->
+
+  <!-- 1) Obrazki jako Resource (stabilne pack URI, bez kopiowania do bin) -->
+  <ItemGroup>
+    <!-- Usuń poprzednie wpisy 'None' dla obrazów, jeśli były generowane -->
+    <None Remove="Images\pascal.png" />
+    <None Remove="Images\csharp.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\pascal.png" />
+    <Resource Include="Images\csharp.png" />
+  </ItemGroup>
+
+  <!-- 2) Słowniki stylów jako Page (ResourceDictionary) -->
+  <!-- <ItemGroup>
+    <Page Include="Themes\Colors.Light.xaml" />
+    <Page Include="Themes\Colors.Dark.xaml" />
+    <Page Include="Themes\Controls.xaml" />
+  </ItemGroup> -->
+
+  <!-- 3) Pliki do kopiowania do output -->
+  <ItemGroup>
+    <!-- Klucz/API -->
+    <None Update="apikey.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+
+    <!-- Konfiguracja chatu -->
+    <None Update="chatConfiguration.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+
+    <!-- Prompty i przykłady -->
+    <None Include="Prompt\pascal_to_csharp.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Prompt\Examples\**\*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
+    <!-- Składnia AvalonEdit (schemat) -->
+    <None Include="Syntax\Pascal.xshd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!-- ========================= -->
+  <!--         PAKIETY           -->
+  <!-- ========================= -->
+  <ItemGroup>
+    <PackageReference Include="AvalonEdit" Version="6.3.0.90" />
+    <PackageReference Include="ICSharpCode.Decompiler" Version="9.1.0.7988" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.8.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.0-preview.2.25163.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.3" />
+    <PackageReference Include="Selenium.WebDriver" Version="4.20.0" />
+    <PackageReference Include="SeleniumExtras.WaitHelpers" Version="1.0.2" />
+  </ItemGroup>
+
+</Project>

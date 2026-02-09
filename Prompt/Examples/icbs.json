@@ -1,0 +1,45 @@
+{
+	"Service":"ICBS",
+	"Methods":[
+		{
+			"Pascal":["Connect", "caConnect"],
+			"CSharp":"Connect('A')",
+			"Examples": null
+		},
+		{
+			"Pascal":["SendKeysAt", "SendKeysAT"],
+			"CSharp":"SendKeysAt",
+			"Examples": [
+				{
+					"PascalCode": "SendKeysAT('abc', 20,10)",
+					"CSharpCode": "icbs.SendKeysAt(\"abc\", 20,10)"
+				}
+			]
+		},
+		{
+			"Pascal":["SendKeys"],
+			"CSharp":"SendKeys",
+			"Examples": [
+				{
+					"PascalCode": "SendKeys('@E')",
+					"CSharpCode": "icbs.SendKeys(\"@E\");"
+				}
+			]
+			
+		},
+		{
+			"Pascal":["Trim"],
+			"CSharp":"Trim",
+			"Examples": [
+				{
+					"PascalCode": "Trim(GetTextRect(09,26,09,48))",
+					"CSharpCode": "icbs.GetTextRect(09,26,09,48).Trim()"
+				},
+				{
+					"PascalCode": "Trim(GetTextRect(x1,y1,x2,y2))",
+					"CSharpCode": "icbs.GetTextRect(x1,y1,x2,y2).Trim()"
+				}
+			]
+		}		
+	]
+}
